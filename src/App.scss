@@ -1,0 +1,15 @@
+.accordion {
+    position: absolute;
+    left: -100%;
+    transition: 0.4s all;
+    &--visible {
+        left: 0;
+    }
+}
+.bold {
+    &--red {
+        color: red;
+        font-weight: 900;
+        font-size: 40px;
+    }
+}

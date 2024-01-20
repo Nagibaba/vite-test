@@ -1,59 +1,31 @@
-import {
-    lazy,
-    useState,
-    useMemo,
-    useCallback,
-    useEffect,
-    Suspense,
-} from 'react'
 import './App.scss'
-import axios from 'axios'
-import axiosInstance from './common/axiosInstance'
-
-// Code splitting
-const TextArea = lazy(() => import('./components/TextArea/TextArea.jsx'))
+import { ThemeProvider } from 'styled-components'
+import theme from './theme'
+import avatar from './assets/images/avatar.png'
 
 function App() {
-    const [users, setUsers] = useState([])
-
-    const getUsersA = async () => {
-        const url = 'users?page=2'
-        const { data } = await axiosInstance.get(url)
-        console.log('axios', data)
-        setUsers(data.data)
-    }
-    useEffect(() => {
-        getUsersA()
-    }, [])
-
-    const login = async () => {
-        try {
-            const url = 'login'
-            const { data } = await axiosInstance.post(url, {
-                email: 'peter@klaven',
-            })
-            console.log('login', data)
-        } catch (error) {
-            // alert(error.message)
-        }
-    }
     return (
-        <div className="center gap-10">
-            <button onClick={login}>Login</button>
-            <Suspense fallback="loading...">
-                <TextArea value={1} />
-            </Suspense>
-            {users.map((user) => (
-                <div key={user.id} className="user">
-                    <p className="user__email">{user.email}</p>
-                    <img
-                        className="user__avatar"
-                        src={user.avatar}
-                        alt="avatar"
-                    />
+        // Provider for styled components
+        <ThemeProvider theme={theme}>
+            {/* Tailwind example component */}
+            <div className="center gap-10 bg-yellow">
+                <div className="font-card bg-white rounded-xl px-3 py-4 max-w-[360px] flex flex-col items-center space-y-3">
+                    <img className="w-6 h-6 rounded-full" src={avatar} alt="" />
+                    <h2 className="font-semibold text-l text-center">
+                        Constructive and destructive waves
+                    </h2>
+                    <p className="text-base text-center font-normal">
+                        Amet minim mollit non deserunt ullamco est sit aliqua
+                        dolor do amet sint. Velit officia consequat duis enim
+                        velit mollit. Exercitation veniam consequat sunt nostrud
+                        amet.
+                    </p>
+                    <button className="rounded text-white bg-purple p-3 w-full font-semibold">
+                        Continue
+                    </button>
                 </div>
-            ))}
-        </div>
+            </div>
+        </ThemeProvider>
     )
 }
 

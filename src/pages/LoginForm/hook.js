@@ -7,11 +7,16 @@ export const useForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await axiosInstance.post('login', values)
+            const response = await axiosInstance.post('login', values)
+            if (response.data.token)
+                localStorage.setItem('token', response.data.token)
         } catch (error) {
             setError(error.response.data.error)
         }
     }
+
+    // KISS
+    // Keep it simple and stupid
 
     const handleChange = (e) => {
         setError('')

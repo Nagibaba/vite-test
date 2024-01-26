@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://reqres.in/api/',
+    baseURL: 'https://jsonplaceholder.typicode.com/',
     timeout: 1000,
     // headers: { 'X-Custom-Header': 'foobar' },
 })
@@ -10,8 +10,7 @@ axiosInstance.interceptors.response.use(
     function (response) {
         // Any status code that lie within the range of 2xx cause this function to trigger
         // Do something with response data
-        if (response.data.token)
-            localStorage.setItem('token', response.data.token)
+
         return response
     },
     function (error) {
@@ -29,7 +28,6 @@ axiosInstance.interceptors.request.use(
         if (token) config.headers.Authorization = token
 
         // Authorization: 123l1n23l1jn
-
         return config
     },
     function (error) {

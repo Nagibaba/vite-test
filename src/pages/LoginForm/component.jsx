@@ -6,7 +6,7 @@ const LoginForm = () => {
     const { error, values, handleSubmit, handleChange } = useForm()
     return (
         <div className="center">
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <input
                     name="email"
                     type="text"
@@ -23,8 +23,8 @@ const LoginForm = () => {
                     value={values.password}
                     onChange={handleChange}
                 />
-                <span className={styles.error}>{error}</span>
                 <button>Submit</button>
+                <span className={styles.error}>{error}</span>
             </form>
         </div>
     )

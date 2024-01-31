@@ -16,8 +16,6 @@ const getPosts = (postId) => {
 function* fetchPostsSaga(action) {
     const postId = action.payload
 
-    console.log(3333, postId)
-
     try {
         const data = yield call(getPosts, postId)
         if (postId) {

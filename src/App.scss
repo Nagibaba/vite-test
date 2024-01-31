@@ -36,3 +36,10 @@ body,
         border-radius: 50px;
     }
 }
+
+table,
+tr,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}

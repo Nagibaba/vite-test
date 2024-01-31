@@ -1,21 +1,11 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import styles from './styles.module.css'
 
-export const Input = forwardRef((props, ref) => {
-    const inputRef = useRef(null)
-
-    useImperativeHandle(
-        ref,
-        () => {
-            return {
-                inputaBax() {
-                    inputRef.current.focus()
-                },
-            }
-        },
-        []
+export const Input = (props) => {
+    const { error, ...rest } = props
+    return (
+        <>
+            <input {...rest} />
+            <span className={styles.error}>{error}</span>
+        </>
     )
-
-    return <input ref={inputRef} type="text" {...props} />
-})
-
-Input.displayName = 'Input'
+}

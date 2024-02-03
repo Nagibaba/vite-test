@@ -23,6 +23,7 @@ import Posts from './pages/Posts'
 import rootSaga from './common/sagas'
 import postsSlice from './common/state/reducers/postsSlice'
 import SinglePost from './pages/SinglePost'
+import Login from './pages/Login'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -46,6 +47,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
                     <Route path="/loginform" element={<LoginForm />} />
                     <Route path="/posts" element={<Posts />} />
                     <Route path="/posts/:id" element={<SinglePost />} />

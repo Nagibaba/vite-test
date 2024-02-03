@@ -16,10 +16,6 @@ body,
 .font-large {
     font-size: 40px;
 }
-.gap-10 {
-    display: flex;
-    gap: 10px;
-}
 
 .user {
     display: flex;
@@ -42,4 +38,14 @@ tr,
 td {
     border: 1px solid white;
     border-collapse: collapse;
+}
+
+.flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+.gap-10 {
+    gap: 10px;
 }

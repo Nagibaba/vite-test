@@ -29,10 +29,6 @@ const Login = () => {
         },
     })
 
-    useEffect(() => {
-        console.log(formik)
-    }, [])
-
     return (
         <div className="center">
             <form onSubmit={formik.handleSubmit} className="flex column gap-10">
@@ -40,7 +36,6 @@ const Login = () => {
                     label="Email"
                     error={formik.touched.email && formik.errors.email}
                     placeholder="Emailinizi daxil edin"
-                    name="email"
                     {...formik.getFieldProps('email')}
                 />
 
@@ -49,11 +44,15 @@ const Login = () => {
                     type="password"
                     error={formik.touched.parol && formik.errors.parol}
                     placeholder="Parolunuzu daxil edin"
-                    name="parol"
                     {...formik.getFieldProps('parol')}
                 />
 
-                <Button>Login </Button>
+                <Button
+                    type="submit"
+                    disabled={!formik.dirty || !formik.isValid}
+                >
+                    Login{' '}
+                </Button>
             </form>
         </div>
     )

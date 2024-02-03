@@ -2,3 +2,8 @@
     height: 40px;
     background-color: #8e44ad;
 }
+
+.button[disabled] {
+    background-color: gray;
+    cursor: not-allowed;
+}
